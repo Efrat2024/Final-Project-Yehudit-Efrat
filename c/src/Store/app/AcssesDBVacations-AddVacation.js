@@ -33,7 +33,7 @@ export default function BasicCardVacation(props) {
 
   const [{ data, loading, error }, refetch] = useAxios(
     {
-      url: 'http://localhost:4444/api/vacation',
+      url: 'https://server-tam.onrender.com/api/vacation',
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
@@ -159,7 +159,7 @@ export default function BasicCardVacation(props) {
               size="small"
               onClick={async () => {
                 try {
-                  await Axios.delete(`http://localhost:4444/api/vacation`, {
+                  await Axios.delete(`https://server-tam.onrender.com/api/vacation`, {
                     data: { _id: i._id },
                     headers:{
                       authorization:"Bearer "+localStorage.getItem("token")
@@ -263,7 +263,7 @@ export default function BasicCardVacation(props) {
                   <Button onClick={async()=>{
                                 const res = await Axios({
                             // Endpoint to send files
-                            url: "http://localhost:4444/api/vacation/deleteImageFromImages",
+                            url: "https://server-tam.onrender.com/api/vacation/deleteImageFromImages",
                             method: "DELETE",
                             headers: {
                             // Add any auth token here
@@ -300,7 +300,7 @@ export default function BasicCardVacation(props) {
                    
                     const res = await Axios({
                       // Endpoint to send files
-                      url: "http://localhost:4444/api/vacation",
+                      url: "https://server-tam.onrender.com/api/vacation",
                       method: "PUT",
                       headers: {
                       // Add any auth token here
@@ -421,7 +421,7 @@ export default function BasicCardVacation(props) {
             console.log("postpost p");
             const res = await Axios({
               // Endpoint to send files
-              url: "http://localhost:4444/api/vacation",
+              url: "https://server-tam.onrender.com/api/vacation",
               method: "POST",
               headers: {
               // Add any auth token here

@@ -1,7 +1,5 @@
 import apiSlice from '../Slices/apiSlice';
 import { setToken } from './authSlice';
-
-// Logout
 const authApiSlice = apiSlice.injectEndpoints({
     endpoints: (build) => ({
         login: build.mutation({

@@ -146,7 +146,7 @@ console.log("im in func if null");
       id:  data && data[7]?.images[0] ? data[7]._id :"nullo"
     },
     {
-      url: data && data[8]?.images[0] ? https://server-tam.onrender.com/uploads/${data[8].images[0].split("\\")[2]}`:'http://localhost:3000/logo192.png',
+      url: data && data[8]?.images[0] ? `https://server-tam.onrender.com/uploads/${data[8].images[0].split("\\")[2]}`:'http://localhost:3000/logo192.png',
       title: data && data[8]?.images[0] ? data[8].name:'Reading',
       width: '40%',
       id:  data && data[8]?.images[0] ? data[8]._id :"nullo"

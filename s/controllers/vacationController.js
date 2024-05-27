@@ -242,4 +242,4 @@ const one = async (req, res) => {
     }
 
 }
-module.exports = { getAllVacation, getVacationById, deleteImageFromImages, createNewVacation, deleteVacation, updateVacation, getFourNewVacations, one }
+module.exports = { getAllVacation, getVacationById, deleteImageFromImages, createNewVacation, deleteVacation, updateVacation, one }

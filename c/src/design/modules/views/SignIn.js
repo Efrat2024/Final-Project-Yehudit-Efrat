@@ -39,7 +39,7 @@ const dispatch = useDispatch()
   const navigate = useNavigate()
   useEffect(() => {
     if (isError) {
-        alert("השם או הסיסמא אינם נכונים")
+        alert(error.error+"השם או הסיסמא אינם נכונים")
     }
 
 }, [isError])

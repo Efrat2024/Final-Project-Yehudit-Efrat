@@ -17,8 +17,7 @@ import { setupListeners } from '@reduxjs/toolkit/query';
 import HomeManager from './design/modules/components/HomeManager'
 import UserList from './Store/app/AcssesDBVacations-AddVacation';
 import StatusSlice from './Store/Slices/StatusSlice'
-import  Shop2 from './design/modules/components/Shop2'
-import  Shop from './design/modules/components/Shop'
+import  BuyVacationShop from './design/modules/components/BuyVacationShop'
 import Enter from './design/modules/components/Enter'
 import HomeBeforeSingIn from './design/modules/components/HomeBeforeRegister'
 import 'primeicons/primeicons.css';
@@ -73,10 +72,9 @@ function App() {
             <Route path='/' element={token?<Home/>:<HomeBeforeSingIn/>} />
             <Route path='/UserList' element={<UserList />} />
             <Route path='/SignUp' element={<SignUp />} />
-            {/* <Route path='/VacationList' element={<VacationList />} /> */}
             <Route path='/SignIn' element={<SignIn />} />
             <Route path='/Enter' element={<Enter />} />
-            <Route path="/Shop2" element={<Shop2 />} />
+            <Route path="/BuyVacationShop" element={<BuyVacationShop />} />
             <Route path="/GetAllVacationListList" element={<GetAllVacationListList />} />
             <Route path='/User' element={<SignIn />} />
             <Route path='/info' element={<Info />} />

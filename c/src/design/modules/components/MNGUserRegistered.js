@@ -3,28 +3,28 @@ import { Button } from 'primereact/button';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Tooltip } from 'primereact/tooltip';
-// import { ProductService } from './service/ProductService';
 import { saveAs } from 'file-saver';
-import AppAppBar from '../views/AppAppBarManager';
-import { useGetUserQuery, useGetAllRegistersQuery } from '../../../Store/Slices/authApiSlice';
+import { useGetAllRegistersQuery } from '../../../Store/Slices/authApiSlice';
 const MNGUserRegister = () => {
-    const [products, setProducts] = useState([]);
+    const { data:dataUsers, isError, error, isLoading, isSuccess } = useGetAllRegistersQuery();
+    useEffect(() => {
+        if (isError) {
+        console.log("isError",isError);
+        }
+      }, [ isError]);
+      useEffect(() => {
+        if (isLoading) {
+        console.log("isLoading",isLoading);
+        }
+      }, [ isLoading]);
     const dt = useRef(null);
-
-
-    const cols = [
+  const cols = [
         { field: 'firstname', header: 'שם פרטי' },
         { field: 'lastname', header: 'שם משפחה' },
         { field: 'email', header: 'מייל' },
         { field: 'vacationPackage.length', header: 'מספר פעמים שרכש'},
         { field: 'isRegister', header: 'רשום או לא'}
     ];
-
-    // useEffect(() => {
-    //     ProductService.getProductsMini().then((data) => setProducts(data));
-    // }, []);
-    const { data, isError, error, isLoading, isSuccess } = useGetAllRegistersQuery();
-    const dataUsers=data
     
     const exportCSV = (selectionOnly) => {
         dt.current.exportCSV({ selectionOnly });

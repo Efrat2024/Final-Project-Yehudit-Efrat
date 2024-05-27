@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, {  useEffect, useRef } from 'react';
 import { Button } from 'primereact/button';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
@@ -7,9 +7,18 @@ import { saveAs } from 'file-saver';
 import { useGetUserQuery } from '../../../Store/Slices/authApiSlice';
 
 const MNGUser = () => {
+    const { data: dataUsers, isError, error, isLoading, isSuccess } = useGetUserQuery();
+    useEffect(() => {
+        if (isError) {
+        console.log("isError",isError);
+        }
+      }, [ isError]);
+      useEffect(() => {
+        if (isLoading) {
+        console.log("isLoading",isLoading);
+        }
+      }, [ isLoading]);
     const dt = useRef(null);
-
-
     const cols = [
         { field: 'firstname', header: 'שם פרטי' },
         { field: 'lastname', header: 'שם משפחה' },
@@ -17,7 +26,7 @@ const MNGUser = () => {
         { field: 'vacationPackage.length', header: 'מספר פעמים שרכש'},
         { field: 'isRegister', header: 'רשום או לא'}
     ];
-    const { data: dataUsers, isErroru, erroru, isLoadingu, isSuccessu } = useGetUserQuery();
+    
     const exportCSV = (selectionOnly) => {
         dt.current.exportCSV({ selectionOnly });
     };
@@ -53,7 +62,6 @@ const MNGUser = () => {
 
     return (
         <>
-        {/* <AppAppBar/> */}
             <div className="card">
                 <Tooltip target=".export-buttons>button" position="bottom" />
 

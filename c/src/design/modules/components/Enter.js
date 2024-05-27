@@ -1,15 +1,13 @@
 import React from 'react';
-import { useGetUserQuery } from '../../../Store/Slices/authApiSlice';
 import useAuth from '../../../Store/app/useAuth';
 import img1 from '../../../images/close-up-funny-boy-with-crossed-arms.jpg';
 import '../../css/MNGHome.css';
 function Enter(props) {
-  const { data, isLoading, isError, error } = useGetUserQuery();
   const { firstname, lastname } = useAuth()
   const username = `${firstname} ${lastname}`
 
   return (<>
-    {isLoading ? <h1>Loading</h1> :
+
       <>
         <br></br> <br></br> <br></br> <br></br> <br></br> <br></br>
         <div className="card2">
@@ -24,7 +22,7 @@ function Enter(props) {
             </div>
           </div>
         </div>
-      </>}</>
+      </></>
   );
 }
 

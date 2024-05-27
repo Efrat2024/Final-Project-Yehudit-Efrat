@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
-// import { Link } from 'react-router-dom';
 import Container from '@mui/material/Container';
 import Typography from '../../css/components-of-css-temlate/Typography';
 import TextField from './TextField';
@@ -89,25 +88,7 @@ export default function AppFooter() {
   ))}
 </Box>
           </Grid>
-          {/* <Grid item xs={6} sm={8} md={4}>
 
-            <TextField
-              select
-              size="medium"
-              variant="standard"
-              SelectProps={{
-                native: true,
-              }}
-              sx={{ mt: 1, width: 150 }}
-            >
-              {LANGUAGES.map((language) => (
-                <option value={language.code} key={language.code} onClick={() => { handleLanguageClick(language); console.log("im here", language); }}>
-                  {language.name}
-
-                </option>
-              ))}
-            </TextField>
-          </Grid> */}
 
         </Grid>
       </Container>

@@ -6,37 +6,43 @@ import { classNames } from 'primereact/utils';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { useNavigate } from 'react-router-dom';
 import { OrderList } from 'primereact/orderlist';
-import { Dialog } from 'primereact/dialog';
-import { InputText } from 'primereact/inputtext';
-import Typography from '../../css/components-of-css-temlate/Typography';
 import { useGetVacationsQuery, useAddVacationToMyshoppingCartMutation, useDeleteVacationToMyshoppingCartMutation, useAddTovacationPackageMutation } from '../../../Store/Slices/vacationApiSlice';
-import { Rating } from 'primereact/rating';
 import { Sidebar } from 'primereact/sidebar';
 import { useGetUserQuery } from '../../../Store/Slices/authApiSlice';
 import useAuth from '../../../Store/app/useAuth';
-import { Card } from 'primereact/card';
-import AppAppBarUser from '../views/AppAppBarUser'
-import FinishBuying from '../components/FinishBuying'
 import { add,addMany } from '../../../Store/Slices/counterSlice'
-import FormButton from '../../css/components-of-form/FormButton';
-// import { Avatar } from '@/components/lib/avatar/Avatar';
-import axios from 'axios';
-import img1 from '../../../images/packag1.jpg'
 import '../../css/Niss.css'
 import { useDispatch } from 'react-redux';
-const Shop2 = () => {
+const BuyVacationShop = () => {
     const dispatch = useDispatch()
     const [layout, setLayout] = useState('grid');
     const navigate = useNavigate()
-    const [isZoomed, setIsZoomed] = useState(false);
-    const { _id: userId, firstname, lastname, email, roles } = useAuth()
+    const { _id: userId, firstname, lastname } = useAuth()
     const username = `${firstname} ${lastname}`
-
     const { data, isLoading, isError, error } = useGetVacationsQuery();
-    const { data: dataUsers, isErroru, erroru, isLoadingu, isSuccessu } = useGetUserQuery();
+    const { data: dataUsers, isErrorUsers, errorUsers, isLoadingUsers, isSuccessUsers } = useGetUserQuery();
+    useEffect(() => {
+        if (isLoading) {
+        console.log("isLoading",isLoading);
+        }
+      }, [ isLoading]);
+      useEffect(() => {
+        if (isError) {
+        console.log("isError",isError);
+        }
+      }, [ isError]);
+      useEffect(() => {
+        if (isErrorUsers) {
+        console.log("isErrorUsers",errorUsers);
+        }
+      }, [ isErrorUsers]);
+      useEffect(() => {
+        if (isLoadingUsers) {
+        console.log("isLoadingUsers",isLoadingUsers);
+        }
+      }, [ isLoadingUsers]);
     const ind = dataUsers?.findIndex((i) => i._id === userId);
     const [visibleBuying, setVisibleBuying] = useState(false);
-    const [visible, setVisible] = useState(false);
     const [addVacationToMyshoppingCart] = useAddVacationToMyshoppingCartMutation();
     const [deleteVacationToMyshoppingCart] = useDeleteVacationToMyshoppingCartMutation()
     const [addTovacationPackage] = useAddTovacationPackageMutation()
@@ -52,9 +58,8 @@ const Shop2 = () => {
     });
 
     const handleBuyVacation = (vacationId) => {
-        debugger
         dispatch(addMany({add:1}))
-        const x = data?.find(i => i._id === vacationId);
+        dispatch(add())
         addVacationToMyshoppingCart({ userId, vacationId })
         setVisibleBuying(true);
         
@@ -87,12 +92,11 @@ const Shop2 = () => {
 
         addVacationToMyshoppingCart({ userId, vacationId })
         setVisibleBuying(true);
-        // Handle increase quantity logic
     };
     const pairs = data?.map(element => {
         return {
             id: element._id,
-            name: element.name // Assuming the name field exists in your data
+            name: element.name 
         };
     });
     const findNameById = (id2) => {
@@ -119,7 +123,7 @@ const Shop2 = () => {
     const itemTemplate2 = (item) => {
         return (<>
             <div className="flex flex-wrap p-2 align-items-center gap-3">
-                <img className="w-4rem shadow-2 flex-shrink-0 border-round" src={"https://server-tam.onrender.com/uploads/" + findImgByVacationId(item?.vacations)?.split("\\")[2]} />
+                <img className="w-4rem shadow-2 flex-shrink-0 border-round" src={"http://localhost:4444/uploads/" + findImgByVacationId(item?.vacations)?.split("\\")[2]} />
                 <div className="flex-1 flex flex-column gap-2 xl:mr-8">
                     <span className="font-bold">{findNameByVacationId(item.vacations)}</span>
                     <div className="flex align-items-center gap-2">
@@ -245,13 +249,6 @@ const Shop2 = () => {
         return <div className="grid grid-nogutter">{vacation.map((vacation, index) => itemTemplate(vacation, layout, index))}</div>;
     };
 
-    const header = () => {
-        return (
-            <div className="flex justify-content-end">
-                <DataViewLayoutOptions layout={layout} onChange={(e) => setLayout(e.value)} />
-            </div>
-        );
-    };
 
     return (<>
 
@@ -283,4 +280,4 @@ const Shop2 = () => {
     )
 }
 
-export default Shop2;
+export default BuyVacationShop;

@@ -2,8 +2,6 @@ import * as React from 'react';
 import { Field, Form, FormSpy } from 'react-final-form';
 import Box from '@mui/material/Box';
 import Typography from '../../css/components-of-css-temlate/Typography';
-import AppFooter from '../views/AppFooter';
-import AppAppBar from '../views/AppAppBarManager';
 import AppForm from '../views/AppForm';
 import { email, required } from '../form/validation';
 import RFTextField from '../../css/components-of-form/RFTextFeild';
@@ -16,14 +14,12 @@ function ForgotPassword() {
 
   const validate = (values) => {
     const errors = required(['email'], values);
-
     if (!errors.email) {
       const emailError = email(values.email);
       if (emailError) {
         errors.email = emailError;
       }
     }
-
     return errors;
   };
 

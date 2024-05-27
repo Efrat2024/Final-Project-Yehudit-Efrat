@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
+import React, { useState,useEffect } from 'react';
+import { DataView } from 'primereact/dataview';
 import { classNames } from 'primereact/utils';
 import { useGetVacationsQuery } from '../../../Store/Slices/vacationApiSlice';
 import { useGetUserQuery } from '../../../Store/Slices/authApiSlice';
@@ -10,7 +10,27 @@ import useAuth from '../../../Store/app/useAuth';
 
 const Shop = () => {
     const { data, isLoading, isError, error } = useGetVacationsQuery();
-    const { data: dataUsers, isErroru, erroru, isLoadingu, isSuccessu } = useGetUserQuery();
+    const { data: dataUsers, isErrorUsers, errorUsers, isLoadingUsers, isSuccessUsers } = useGetUserQuery();
+    useEffect(() => {
+        if (isLoading) {
+        console.log("isLoading",isLoading);
+        }
+      }, [ isLoading]);
+      useEffect(() => {
+        if (isError) {
+        console.log("isError",isError);
+        }
+      }, [ isError]);
+      useEffect(() => {
+        if (isErrorUsers) {
+        console.log("isErrorUsers",errorUsers);
+        }
+      }, [ isErrorUsers]);
+      useEffect(() => {
+        if (isLoadingUsers) {
+        console.log("isLoadingUsers",isLoadingUsers);
+        }
+      }, [ isLoadingUsers]);
     const { _id: userId, firstname, lastname, email, roles } = useAuth()
     const ind = dataUsers?.findIndex((i) => i._id === userId);
     const listItem = (vacation, index) => {
@@ -34,7 +54,6 @@ const Shop = () => {
                 <div className={classNames('flex flex-column xl:flex-row xl:align-items-start p-4 gap-4', { 'border-top-1 surface-border': index !== 0 })}>
                     <i className={PrimeIcons.CHECK_CIRCLE} style={{ fontSize: '2.5rem' }}></i>
                     <i className="PrimeIcons.check-circle" style={{ fontSize: '2.5rem' }}></i>
-                    {/* <img className="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" src={"http://localhost:4444/uploads/"+vacation.images[0].split("\\")[2]}  /> */}
                     <div className="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
                         <div className="flex flex-column align-items-center sm:align-items-start gap-3">
                             <div className="text-2xl font-bold text-900" >הרכישה שלך: {findNameById(vacation.vacations)}</div>

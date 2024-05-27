@@ -1,11 +1,9 @@
 
 import React from 'react';
-import { useGetUserQuery } from '../../../Store/Slices/authApiSlice';
 import useAuth  from '../../../Store/app/useAuth';
 import img1 from '../../../images/bohemian-man-with-his-arms-crossed.jpg'
 import '../../css/MNGHome.css';
 function FinishBuying(props) {
-  const { data, isLoading, isError, error } = useGetUserQuery();
   const {firstname,lastname} = useAuth()
   const username=`${firstname} ${lastname}`
 
@@ -14,7 +12,7 @@ function FinishBuying(props) {
   }
 
   return (<>
-  {isLoading? <h1>טוען</h1>:
+
   <>
   <br></br><br></br><br></br><br></br>
   <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&components=YOUR_COMPONENTS"></script>
@@ -38,7 +36,7 @@ function FinishBuying(props) {
       </div>
 
     </div>
-</>}</>
+</></>
   );
 }
 

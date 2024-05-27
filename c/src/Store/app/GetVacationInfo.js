@@ -29,7 +29,7 @@ const Info = () => {
 
     const itemTemplate = (item) => (
         <img
-            src={item ? `https://server-tam.onrender.com/uploads/${item.split("\\")[2]}` : ""}
+            src={item ? `http://localhost:4444/uploads/${item.split("\\")[2]}` : ""}
             alt="Gallery"
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
@@ -37,7 +37,7 @@ const Info = () => {
 
     const thumbnailTemplate = (item) => (
         <img
-            src={item ? `https://server-tam.onrender.com/uploads/${item.split("\\")[2]}` : ""}
+            src={item ? `http://localhost:4444/uploads/${item.split("\\")[2]}` : ""}
             alt={item}
             style={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover'}}
         />

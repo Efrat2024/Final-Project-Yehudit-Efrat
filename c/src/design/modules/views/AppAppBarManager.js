@@ -48,7 +48,7 @@ function AppAppBar() {
       {
         label: 'כך זה יוצג למשתמש-חבילות הנופשים',
         icon: 'pi pi-shopping-cart',
-        url: '/Shop2'
+        url: '/BuyVacationShop'
     },
     {
       label: 'עריכת נופשים',

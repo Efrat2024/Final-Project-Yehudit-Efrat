@@ -24,7 +24,6 @@ const MNGUserRegister = () => {
     //     ProductService.getProductsMini().then((data) => setProducts(data));
     // }, []);
     const { data, isError, error, isLoading, isSuccess } = useGetAllRegistersQuery();
-    console.log("dataaa",data);
     const dataUsers=data
     
     const exportCSV = (selectionOnly) => {

@@ -64,7 +64,6 @@ const Shop = () => {
 
 
     const listTemplate = (vacations) => {
-        console.log("hh{3", vacations?.vacationPackage);
         return <div className="grid grid-nogutter">{vacations?.vacationPackage?.map((vacation, index) => listItem(vacation, index))}</div>;
     };
 

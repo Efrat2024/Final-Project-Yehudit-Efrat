@@ -31,17 +31,16 @@ default:"2020-01-30"
     price: {
         type: Number,
         required: true,
-        //default: 350,
+       
     },
     location: {
         type: String,
-        //default:"no place" ,
         required: true
     },
     registeredVactioners: [{
         users: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'User', // שם המודל השמור במסד הנתונים
+            ref: 'User', 
             required: true
         },
         quantity: {

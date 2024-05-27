@@ -85,10 +85,6 @@ export default function Users() {
             event.defaultMuiPrevented = true;
         }
     };
-
-    const flag = false
-    const NewRow = {};
-
     const handleEditClick = (id) => async () => {
         setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } });
     };
@@ -100,7 +96,6 @@ export default function Users() {
 
     const handleDeleteClick = (id) => () => {
         deleteItem("http://localhost:4444/api/user/", { data: { id: id } })
-        //setRows(rows.filter((row) => row.id !== id));
         refetch();
     };
 
@@ -119,7 +114,6 @@ export default function Users() {
     const processRowUpdate = async (newRow) => {
 
         const editedRow = data.find((row) => row._id == newRow.id);
-        //  console.log("jjj", editedRow)
         if (editedRow) {
             deleteItem("http://localhost:4444/api/user/", { data: { id: editedRow._id } })
             refetch();

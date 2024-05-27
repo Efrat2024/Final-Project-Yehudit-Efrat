@@ -82,10 +82,8 @@ function AppAppBar() {
 
   return (
     <div>
-      {/* <AppBar position="fixed"> */}
       <div style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 999 }}>
     <div className="flex items-center justify-between card" style={{ padding: '0.5rem' }}>
-        {/* <img className="w-9 sm:w-8em xl:w-10rem shadow-2 block xl:block mx-auto border-round" src={logo} alt="Logo" style={{ width: '3%' }}/> */}
         <Menubar model={items} onClick={handleClick} style={{ width: '100%', backgroundColor: '#fffff', color: '#b12c16' }} />
     </div>
 </div>

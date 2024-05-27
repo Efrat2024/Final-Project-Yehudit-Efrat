@@ -44,7 +44,7 @@ export const update = async (url, body) => {
       "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       "authorization":'Bearer '+localStorage.getItem("token")
     }});
-    // obj.refetch()
+   refetch()
   } catch (error) {
     console.error(error);
   }
@@ -57,7 +57,7 @@ export const deleteItem = async (url, body, obj) => {
       "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       "authorization":'Bearer '+localStorage.getItem("token")
     }});
-    // obj.refetch()
+    refetch()
   } catch (error) {
     console.error(error);
   }
@@ -70,8 +70,7 @@ export const create = async (url, body) => {
       "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       "authorization":'Bearer '+localStorage.getItem("token")
     }});
-    // obj.refetch()
-      console.log("create");
+    refetch()
   } catch (error) {
     console.error(error);
   }
@@ -83,8 +82,7 @@ export const As = async (url, body) => {
       "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       "authorization":'Bearer '+localStorage.getItem("token")
     }});
-    // obj.refetch()
-      console.log("asasasasasas");
+   refetch()
   } catch (error) {
     console.error(error);
   }

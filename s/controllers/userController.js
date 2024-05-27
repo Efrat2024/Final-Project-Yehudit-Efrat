@@ -1,8 +1,5 @@
-const { request } = require("express")
 const User = require("../modules/User")
 const Vacation = require("../modules/Vacation")
-const emailjs = require('emailjs-com');
-
 const mailer = require('../servises/mail');
 const mailerTmar=require('../servises/mailTamar')
 const globaldeleteShopingcart = async (userId, vacation) => {
@@ -44,7 +41,6 @@ const globaldeletevacationPackaget = async ({ userId, vacationId }, res) => {
             user.vacationPackage[id2].quantity--;
 
         }
-        //  console.log(user.shoppingCart, "user.shoppingCart");
         await user.save();
 
         return ('Item delete to vacationPackage successfully');
@@ -93,32 +89,20 @@ const AddQuestionToTamar = async (req, res) => {
 const from=email;
 const body=text;
 sendEmailToTamar(from,body)
-
-        // const Tamar = await User.findById(process.env.ManagerPassword).exec();
-        // console.log(Tamar);
-
 }
 const updateUser = async (req, res) => {//*
     const { _id, firstname, lastname, email, roles, pay } = req.body
     if (!_id) {
         return res.status(400).json({ message: " _id  not found" })
     }
-
-    //    const user= await User.find({email:email,}).lean()
-    //     if(user?.length)
-    //         return res.status(400).json({message:'There is the same email'})
     const user = await User.findById(_id).exec()
     if (!user) {
         return res.status(400).json('no user like that')
     }
-    //  console.log(user, "user");
-    //user.password = password
     user.firstname = firstname
     user.lastname = lastname
     user.email = email
     user.roles = roles
-    // user.vacationPackage=vacationPackage
-    //user.shoppingCart=shoppingCart
     user.pay = pay
     const updatedUser = await user.save()
     res.json(`'${updatedUser.firstname}' updated 😊😊😊`)
@@ -130,16 +114,12 @@ const updateUser = async (req, res) => {//*
 
 
 const addToShoppingCart = async (req, res) => {
-    //  console.log("hhhhhhhhhhhhhhhhhhhhhh");
     const { userId, vacationId } = req.body;
 
     try {
         const user = await User.findById(userId).populate('shoppingCart');
         console.log(user, "::user");
         const vacation = await Vacation.findById(vacationId).populate('registeredVactioners');
-        //  console.log(vacation,"::vacation");
-        //   console.log(user);
-        //  console.log(vacationId);
         if (!user || !vacation) {
 
             return res.status(404).json('no user like that');
@@ -154,13 +134,6 @@ const addToShoppingCart = async (req, res) => {
             user.shoppingCart[id2].quantity++;
         }
         await user.save();
-        // const check_if_user_in_list = vacation.registeredVactioners.findIndex(item => item.users.toString() === user._id.toString());
-        // if (check_if_user_in_list === -1) {
-        //     vacation.registeredVactioners.push({ users: user._id, quantity: 1 });
-        // } else {
-        //     vacation.registeredVactioners[check_if_user_in_list].quantity++;
-        // }
-        // await vacation.save();
         return res.json('Item added to shopping cart successfully');
 
     } catch (error) {
@@ -172,8 +145,6 @@ const addToMyvacationPackage = async (req, res) => {
     const { userId } = req.body;
     try {
         const user = await User.findById(userId).populate('shoppingCart');
-        //console.log("444 user", user.firstname);
-
         if (!user || !user.shoppingCart || user.shoppingCart.length === 0) {
             return res.status(404).json({ error: 'Your shopping cart is empty' });
         }
@@ -249,7 +220,7 @@ const deleteFromShoppingCart = async (req, res) => {
             user.shoppingCart[id2].quantity--;
 
         }
-        //    console.log(user.shoppingCart, "user.shoppingCart");
+    
         await user.save();
 
         return res.json('Item delete to shopping cart successfully');
@@ -281,7 +252,6 @@ const deleteFromvacationPackaget = async (req, res) => {
             user.vacationPackage[id2].quantity--;
 
         }
-        //  console.log(user.shoppingCart, "user.shoppingCart");
         await user.save();
 
         return res.json('Item delete to vacationPackage successfully');
@@ -304,7 +274,6 @@ const keepMeUpdate = async (req, res) => {
         return res.status(400).json('no user like that keep')
     }
     user.isRegister=true
-    // user.email = email
     const updatedUser = await user.save()
     body=" 👍תודה שנרשמת לתמר נופשים! אנחנו נעדכן אותך, ונשלח לך הודעה למייל בכל נופש חדש שנפתח..... "
     sendEmailToUserf(user.email,body )

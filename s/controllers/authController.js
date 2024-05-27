@@ -2,9 +2,7 @@ const User = require("../modules/User")
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const login = async (req, res) => {
-    // debugger;
     const { email, password } = req.body
-
     if (!email || !password) {
         return res.status(400).json({ message: 'All fields are required' })
     }
@@ -22,11 +20,6 @@ const login = async (req, res) => {
 
     const userInfo = { _id: foundUser._id, firstname: foundUser.firstname, lastname: foundUser.lastname, email: foundUser.email, password: foundUser.password, role: foundUser.roles }
     const accessToken = jwt.sign(userInfo, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15m' })
-    // const refreshToken=jwt.sign({email:foundUser.email},process.env.REFRESH__SECRET)
-    // res.cookie("jwt",refreshToken,{
-    //     httpOnly:true,
-    //     maxAge:7*24*60*60*1000
-    // })
     if (password == process.env.ManagerPassword) {
         res.json({ accessToken: accessToken, status: 1, name: `${foundUser.firstname} ${foundUser.lastname}`, id: `${foundUser.id}` })
     }
@@ -36,7 +29,6 @@ const login = async (req, res) => {
 
 }
 const register = async (req, res) => {
-    // debugger;
     console.log("i in register in server");
     const { password, firstname, lastname, email, vacationPackage, shoppingCart, pay } = req.body
     console.log({ password, firstname, lastname, email });
@@ -58,7 +50,6 @@ const register = async (req, res) => {
     console.log("user", user);
     if (user && user.password === process.env.ManagerPassword) {
         const accessToken = jwt.sign(userObject, process.env.ACCESS_TOKEN_SECRET)
-        // res.json({ accessToken, role: "User" })
         res.status(201).json({ message: `New manager ${user.firstname}  ${user.lastname}  created`, status: 1, accessToken })
     }
 

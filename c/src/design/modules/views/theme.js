@@ -34,7 +34,6 @@ const rawTheme = createTheme({
     fontWeightLight: 300, // Work Sans
     fontWeightRegular: 400, // Work Sans
     fontWeightMedium: 700, // Roboto Condensed
-    // fontFamily: 'Shluk 1.0 AAA' - לא יופיע כאן, נשנה זאת בהגדרת ה-theme
   },
 });
 

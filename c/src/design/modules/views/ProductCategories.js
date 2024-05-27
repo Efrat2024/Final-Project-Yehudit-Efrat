@@ -4,10 +4,8 @@ import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Container from '@mui/material/Container';
 import Typography from '../../css/components-of-css-temlate/Typography';
-import { useState } from 'react';
 import useAxios from 'axios-hooks'
 import { useEffect } from 'react';
-import {useGetVacationsQuery} from '../../../Store/Slices/vacationApiSlice'
 import { useNavigate } from 'react-router-dom';
 
 const ImageBackdrop = styled('div')(({ theme }) => ({
@@ -63,9 +61,6 @@ const ImageIconButton = styled(ButtonBase)(({ theme }) => ({
 
 
 export default function ProductCategories() {
-  // const [thereAeeVacations, setThereAteVacations] = useState()
-  // const { data } = useGetVacationsQuery();
-  // console.log("dataaaaaaaaaaaaaa",data)
   const navigate = useNavigate()
   console.log(localStorage.getItem("token"));
   const [{ data, loading, error }, refetch] = useAxios(
@@ -87,9 +82,6 @@ export default function ProductCategories() {
       
      navigate(`/info?e=${e}`);
   }
-  }
-  const funcIfNull=()=>{
-console.log("im in func if null");
   }
   const images = [
     
@@ -152,7 +144,6 @@ console.log("im in func if null");
       id:  data && data[8]?.images[0] ? data[8]._id :"nullo"
     },
   ];
-  //// !thereAeeVacations?:<>
   return (
     
     <Container component="section" sx={{ mt: 8, mb: 4 }}>
@@ -160,7 +151,6 @@ console.log("im in func if null");
         לכל הסוגים והטעמים...
       </Typography>
       
-      {/* <button onClick={getImages}> rrrr</button> */}
       <Box sx={{ mt: 8, display: 'flex', flexWrap: 'wrap' }}>
   {images.map((image) => (
     <ImageIconButton
@@ -212,5 +202,5 @@ console.log("im in func if null");
 
     </Container>
   );
-  //</>
+
 }

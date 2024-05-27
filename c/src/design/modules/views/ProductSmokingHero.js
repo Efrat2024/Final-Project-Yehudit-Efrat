@@ -9,7 +9,7 @@ import { useState } from 'react';
 import useAuth from '../../../Store/app/useAuth'
 import {useAddQuestionToTamarMutation} from '../../../Store/Slices/authApiSlice'
 function ProductSmokingHero() {
-  const  { _id,firstname,lastname, email,roles}=useAuth()
+  const  {email}=useAuth()
   const [AddQuestionToTamar,{ data, isLoading, isError, error } ]= useAddQuestionToTamarMutation();
   
   const sendMessegeTamar=()=>{
@@ -50,7 +50,6 @@ console.log("setShowElement");
       </Button>
       <div className="card"  >
 {showElement?(
-//  <Editor value={text} onTextChange={(e) => setText(e.htmlValue)} style={{ height: '320px' }} />
 <Editor value={text} 
 onTextChange={(e) => {
     const html = e.htmlValue;

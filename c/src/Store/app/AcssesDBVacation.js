@@ -3,10 +3,8 @@ import { Button } from 'primereact/button';
 import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
 import { Dialog } from 'primereact/dialog';
 import { classNames } from 'primereact/utils';
-//import Login from '../entery/login';
-import {useGetVacationsMutation,useAddVacationToMyshoppingCartMutation,useDeleteVacationToMyshoppingCartMutation,useAddTovacationPackagetMutation} from '../Slices/vacationApiSlice'
+import {useAddVacationToMyshoppingCartMutation} from '../Slices/vacationApiSlice'
 import { InputText } from 'primereact/inputtext';
-//import './gridlist.css'
 import { Sidebar } from 'primereact/sidebar';
 import useAuth from '../app/useAuth'
 
@@ -26,7 +24,6 @@ const GetAllVacationListList = (props) => {
 
     const listItem = (vacation, index) => {
         return (<>
-<p>rrrrrrrrrrrrrrrrrrrrrr</p>
             <div className="col-12" key={vacation?._id}>
                 <div className={classNames('flex flex-column xl:flex-row xl:align-items-start p-4 gap-4', { 'border-top-1 surface-border': index !== 0 })}>
 
@@ -106,7 +103,7 @@ const GetAllVacationListList = (props) => {
                 
                     <Dialog header={`Hi ${username}:)`} visible={visibleBuying} style={{ width: '50vw' }} onHide={() => setVisibleBuying(false)}>
                         <p className="m-0">
-                            you added the '{vacation?.name}' to your basket!!
+                             לסל שלך  {vacation?.name }אתה הוספת את
                         </p>
                     </Dialog>
                 
@@ -115,7 +112,6 @@ const GetAllVacationListList = (props) => {
 
                 <Dialog header="Welcome:)" visible={visible} onHide={() => setVisible(false)}
                     style={{ width: '50vw' }} breakpoints={{ '960px': '75vw', '641px': '100vw' }}>
-                   {/* // <Login from={"vacations"} /> */}
                 </Dialog>
             </div>
 

@@ -71,14 +71,7 @@ const Info = () => {
         console.log("vacationId", vacationId);
         addVacationToMyshoppingCart({ userId, vacationId })
         setVisibleBuying(true);
-        // Handle increase quantity logic
     };
-    const pairs = data?.map(element => {
-        return {
-            id: element._id,
-            name: element.name // Assuming the name field exists in your data
-        };
-    });
     const itemTemplate2 = (item) => {
         return (<>
             <div className="flex flex-wrap p-2 align-items-center gap-3">
@@ -102,10 +95,6 @@ const Info = () => {
         );
     };
 
-    const findNameById = (id2) => {
-        const pair = pairs?.find((e) => e.id === id2);
-        return pair ? pair.name : "";
-    };
     const navigate = useNavigate()
     const handleDecreaseQuantity = (vacationId) => {
         deleteVacationToMyshoppingCart({ userId, vacationId })

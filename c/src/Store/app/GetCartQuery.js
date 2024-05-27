@@ -10,7 +10,7 @@ const Vacations = () => {
         isError,
         error
     } = useGetVacationsQuery()
-    if (isLoading) return <h1>Loading</h1>
+    if (isLoading) return <h1>טוען</h1>
     if (isError) return <h2>{error}</h2>
 
     return (

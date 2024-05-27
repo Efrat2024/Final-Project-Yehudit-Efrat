@@ -3,7 +3,6 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Typography from '../../css/components-of-css-temlate/Typography';
 import withRoot from '../../css/components-of-css-temlate/withRoot';
-import { Link } from 'react-router-dom';
 import ReactMarkdown from "react-markdown"; // Import ReactMarkdown library
 
 function Privacy() {

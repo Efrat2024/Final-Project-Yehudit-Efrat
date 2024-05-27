@@ -5,9 +5,7 @@ const useAuth = () => {
     let isUser = false
     if (token) {
       if(token==='undefined'){
-        console.log("no token");
         token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyYiQxMCRheFNFRnUuanhFd2hSWkhmWmRuN3VPdnZ5SXV1aFJDWnF1cUM2SkU4RThnelhjMUhtOWRoMiIsImZpcnN0bmFtZSI6Iteg16LXnteUIiwibGFzdG5hbWUiOiLXqdee15XXkNec15HXmdelIiwiZW1haWwiOiJuYWFtYUBnbWFpbC5jb20iLCJpYXQiOjE3MTEyMzQwMDV9.KvvwoO3SNPOfCvge5QXn70asrAf6SrP6GE9hdl4DG54"
-
       }
       else{
        

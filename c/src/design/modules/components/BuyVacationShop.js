@@ -93,19 +93,11 @@ const BuyVacationShop = () => {
         addVacationToMyshoppingCart({ userId, vacationId })
         setVisibleBuying(true);
     };
-    const pairs = data?.map(element => {
-        return {
-            id: element._id,
-            name: element.name 
-        };
-    });
-    const findNameById = (id2) => {
-        const pair = pairs?.find((e) => e.id === id2);
-        return pair ? pair.name : "";
-    };
+
 
     const handleDecreaseQuantity = (vacationId) => {
         deleteVacationToMyshoppingCart({ userId, vacationId })
+        
     };
 
 
@@ -117,7 +109,6 @@ const BuyVacationShop = () => {
 
     const func = () => {
         addTovacationPackage({ userId })
-
         navigate('/FinishBuying')
     }
     const itemTemplate2 = (item) => {

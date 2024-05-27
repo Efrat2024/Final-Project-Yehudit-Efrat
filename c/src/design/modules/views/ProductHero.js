@@ -8,15 +8,6 @@ import img2 from '../../../images/ladder-home-reflection-blue-beautiful copy.jpg
 import img3 from '../../../images/beautiful.jpg'
 import { Galleria } from 'primereact/galleria';
 import '../../css/Homepage.css'
-
-
-
-
-
-
-
-
-
 export default function ProductHero() {
   // const [images, setImages] = useState(null);
   const images = [

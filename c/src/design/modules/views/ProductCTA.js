@@ -19,7 +19,6 @@ function ProductCTA() {
   console.log("dataUsers",dataUsers);
   const  { _id,firstname,lastname, email,roles}=useAuth()
   const username=`${firstname} ${lastname}`
-  const [name, setName] = useState(username)
   const [email2, setEmail2] = useState('');
   const[emailInput,setEmailInput]=useState(email)
  
@@ -111,20 +110,6 @@ console.log("rr",email2);
               background: 'url(/static/themes/onepirate/productCTAImageDots.png)',
             }}
           />
-          {/* <Box
-            component="img"
-            src="https://images.unsplash.com/photo-1527853787696-f7be74f2e39a?auto=format&fit=crop&w=750"
-            alt="תת"
-            sx={{
-              position: 'absolute',
-              top: -28,
-              left: -28,
-              right: 0,
-              bottom: 0,
-              width: '100%',
-              maxWidth: 600,
-            }}
-          /> */}
         </Grid>
       </Grid>
       <Snackbar

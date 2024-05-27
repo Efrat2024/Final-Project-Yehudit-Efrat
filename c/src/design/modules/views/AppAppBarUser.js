@@ -8,14 +8,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'primereact/button';
 import useAuth from '../../../Store/app/useAuth'
 import useAxios from 'axios-hooks'
-import Terms from './Terms';
-import Contact from '../components/Contact'
 import { addMany } from '../../../Store/Slices/counterSlice';
 function AppUser() {
   const token = localStorage.getItem("token")
-  const { _id: userId, firstname, lastname, email, roles } = useAuth()
+  const { _id: userId, firstname, lastname } = useAuth()
   const myCnt = useSelector(x=>x.counter.cnt)
-  const [{ data, loading, error: error2 }, refetch] = useAxios(
+  const [{ data, loading, error}, refetch] = useAxios(
     {
       url: `http://localhost:4444/api/user/${userId}`,
       headers: {
@@ -34,7 +32,6 @@ function AppUser() {
   const dispatch = useDispatch()
   useEffect(() => {
     if (data?.shoppingCart) {
-
       if (data?.shoppingCart) {
         const len2 = data?.shoppingCart?.length;
         dispatch(addMany({add:len2}))
@@ -114,16 +111,7 @@ function AppUser() {
   const handleClick = () => {
     setMenuClicked(!menuClicked);
   };
-  useEffect(() => {
-    if (data) {
 
-      const len2 = data?.shoppingCart?.length;
-      // setLen(len2);
-    }
-  }, [data]); // Make sure to include 'ind' if it's used inside the effect
-
-  //   185
-  // 307327
   return (
     <div>
       {/* <AppBar position="fixed"> */}

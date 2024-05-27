@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Menubar } from 'primereact/menubar';
 import { Badge } from 'primereact/badge';
 import { useEffect } from 'react';
-import { removeToken } from '../../../Store/Slices/authSlice';
+import { removeToken ,removeRole} from '../../../Store/Slices/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'primereact/button';
 import useAuth from '../../../Store/app/useAuth'
@@ -73,6 +73,7 @@ function AppUser() {
       command: () => {
         if (token) {
           dispatch(removeToken());
+          dispatch(removeRole());
 
         } else {
           handleSignInAlert();

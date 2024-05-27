@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useState } from 'react'; 
 import { Menubar } from 'primereact/menubar';
 import { removeToken } from '../../../Store/Slices/authSlice';
+import { removeRole } from '../../../Store/Slices/authSlice';
 import { useDispatch } from 'react-redux';
 
 
@@ -34,7 +35,8 @@ function AppAppBar() {
       {
           label: 'התנתק',
           icon: 'pi pi-lock-open',
-          command: () => {dispatch(removeToken()) },
+          command: () => {dispatch(removeRole());dispatch(removeToken());
+             },
           url: '/SignIn'
       },
       {

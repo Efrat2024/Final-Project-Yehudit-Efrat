@@ -36,7 +36,6 @@ function SignIn() {
   return errors;
 };
 const dispatch = useDispatch()
-  const [role, setRole] = useState("")
   const navigate = useNavigate()
   useEffect(() => {
     if (isError) {
@@ -47,7 +46,6 @@ const dispatch = useDispatch()
   useEffect(() => {
     if (isSuccess) {
       dispatch(setToken(data))
-      setRole(data.status)
       if(data.status==2)
       {
               navigate("/Enter")

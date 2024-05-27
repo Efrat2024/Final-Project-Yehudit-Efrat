@@ -17,7 +17,7 @@ function AppUser() {
   const myCnt = useSelector(x=>x.counter.cnt)
   const [{ data, loading, error: error2 }, refetch] = useAxios(
     {
-      url: `http://localhost:4444/api/user/${userId}`,
+      url: `https://server-tam.onrender.com/api/user/${userId}`,
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",

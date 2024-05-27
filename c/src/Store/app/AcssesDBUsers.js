@@ -57,7 +57,7 @@ export default function Users() {
     const UserArr = useSelector(myStore => myStore.UserSlice.UserArr)
 
     const [{ data, loading, error }, refetch] = useAxios({
-        url:`http://localhost:4444/api/user`,
+        url:`https://server-tam.onrender.com/api/user`,
         headers: {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
@@ -121,14 +121,14 @@ export default function Users() {
         const editedRow = data.find((row) => row._id == newRow.id);
         //  console.log("jjj", editedRow)
         if (editedRow) {
-            deleteItem("http://localhost:4444/api/user/", { data: { id: editedRow._id } })
+            deleteItem("https://server-tam.onrender.com/api/user/", { data: { id: editedRow._id } })
             refetch();
 
         }
 
 
 
-        await create('http://localhost:4444/api/user/', {  name: newRow.name, username: newRow.username, email: newRow.email, phone: newRow.phone } )
+        await create('https://server-tam.onrender.com/api/user/', {  name: newRow.name, username: newRow.username, email: newRow.email, phone: newRow.phone } )
         refetch()
    
 

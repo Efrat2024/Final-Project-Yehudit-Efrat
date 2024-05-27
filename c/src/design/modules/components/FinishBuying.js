@@ -1,18 +1,30 @@
 
 import React from 'react';
+import useAxios from 'axios-hooks'
 import useAuth  from '../../../Store/app/useAuth';
 import img1 from '../../../images/bohemian-man-with-his-arms-crossed.jpg'
 import '../../css/MNGHome.css';
 function FinishBuying(props) {
-  const {firstname,lastname} = useAuth()
+  const { _id: userId, firstname, lastname } = useAuth()
+  const [{ data, loading, error}, refetch] = useAxios(
+    {
+      url: `http://localhost:4444/api/user/${userId}`,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        "authorization": 'Bearer ' + localStorage.getItem("token")
+      }
+    }
+  )
   const username=`${firstname} ${lastname}`
 
+
+  const shopingCart=data?.shopingCart;
+  console.log("jjjj",data);
   function redirectToPayPal() {
     window.location.href ='https://www.paypal.com/ncp/payment/EQD3GWV5F7KJW';
   }
-
   return (<>
-
   <>
   <br></br><br></br><br></br><br></br>
   <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&components=YOUR_COMPONENTS"></script>

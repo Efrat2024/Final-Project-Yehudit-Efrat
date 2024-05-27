@@ -63,7 +63,6 @@ const Info = () => {
     };
     const func = () => {
         addTovacationPackage({ userId })
-        
         navigate('/FinishBuying')
     }
     
